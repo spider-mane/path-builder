@@ -1,0 +1,99 @@
+{
+  "name": "webtheory/path-builder",
+  "type": "library",
+  "description": "Create expected, but uncommited directories in your project",
+  "homepage": "https://github.com/spider-mane/path-builder",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chris Williams",
+      "email": "spider.mane.web@gmail.com",
+      "homepage": "https://github.com/spider-mane",
+      "role": "Developer"
+    }
+  ],
+  "keywords": [
+    "path-builder",
+    "webtheory"
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "captainhook/captainhook": "^5.16.4",
+    "fakerphp/faker": "^1.23",
+    "friendsofphp/php-cs-fixer": "^3.17",
+    "oscarotero/env": "^2.1",
+    "phpcompatibility/php-compatibility": "^9.3.5",
+    "phpstan/phpstan": "^1.10.19",
+    "phpunit/phpunit": "^9.6.9",
+    "rector/rector": "^0.17.1",
+    "spatie/phpunit-watcher": "^1.23.6",
+    "squizlabs/php_codesniffer": "^3.7.2",
+    "symfony/thanks": "^1.2.10",
+    "vlucas/phpdotenv": "^5.5",
+    "webtheory/exterminate": "@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebTheory\\PathBuilder\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "bin": [
+    "bin/build-paths"
+  ],
+  "scripts": {
+    "build-paths": "bin/build-paths",
+    "analyze": "vendor/bin/phpstan analyze",
+    "check": "vendor/bin/phpcs",
+    "collect": "vendor/bin/var-dump-server",
+    "hooks": "vendor/bin/captainhook",
+    "rector": "vendor/bin/rector process",
+    "test": "vendor/bin/phpunit",
+    "watch": "vendor/bin/phpunit-watcher",
+    "build": [
+      "@style",
+      "@analyze",
+      "@test"
+    ],
+    "setup": [
+      "composer install",
+      "@build-paths"
+    ],
+    "style": [
+      "vendor/bin/php-cs-fixer fix --verbose",
+      "vendor/bin/phpcbf",
+      "@check"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "process-timeout": 0,
+    "allow-plugins": {
+      "composer/installers": true,
+      "composer/package-versions-deprecated": true,
+      "phpstan/extension-installer": true,
+      "symfony/thanks": true
+    }
+  },
+  "extra": {
+    "build-paths": {
+      "build": {
+        "php-cs-fixer": [],
+        "phpstan": [],
+        "phpunit": [],
+        "psalm": []
+      },
+      "cache": [],
+      "logs": [],
+      "temp": []
+    }
+  }
+}

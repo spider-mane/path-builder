@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+use WebTheory\PathBuilder\PathBuilder;
+
+$root = getcwd();
+
+require $_composer_autoload_path ?? "{$root}/vendor/autoload.php";
+
+$composer = json_decode(file_get_contents($root . '/composer.json'), true);
+$paths = $composer['extra']['build-paths'];
+$builder = new PathBuilder();
+
+$builder->buildPaths($root, $paths);
