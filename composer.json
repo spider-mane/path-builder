@@ -47,10 +47,10 @@
     }
   },
   "bin": [
-    "bin/build-paths"
+    "src/build-paths"
   ],
   "scripts": {
-    "build-paths": "bin/build-paths",
+    "build-paths": "src/build-paths",
     "analyze": "vendor/bin/phpstan analyze",
     "check": "vendor/bin/phpcs",
     "collect": "vendor/bin/var-dump-server",
